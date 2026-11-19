@@ -1,0 +1,21 @@
+[project]
+name = "nowhere-mcp"
+version = "1.0.0"
+requires-python = ">=3.11"
+dependencies = ["fastmcp>=2", "httpx", "numpy", "scipy", "skyfield", "timezonefinder", "uvicorn", "opencc-python-reimplemented", "ephem", "tzdata"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "respx"]
+
+[project.scripts]
+nowhere = "nowhere.server:main"
+nowhere-mcp = "nowhere.server:main"
+
+[tool.setuptools.packages.find]
+include = ["nowhere*"]
+
+[tool.setuptools.package-data]
+nowhere = ["data/*", "data/offline/*", "static/*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
